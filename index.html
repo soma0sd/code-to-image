@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <!-- CSS -->
+  <link id="css-normalize" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.0/normalize.min.css" />
+  <link id="css-prism" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.14.0/themes/prism.min.css" />
+  <link id="css-prism-line-numbers" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.14.0/plugins/line-numbers/prism-line-numbers.min.css" />
+  <link id="css-codeflask" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/CodeFlask.js/0.2.0/codeflask.css" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <p class="menu">
+    <button id="btn_cr" onclick="create_img();">다운로드</button>
+    <button id="btn_cp" onclick="show_img();">미리보기</button>
+  </p>
+  <div id="code-editor"></div>
+  <div id="result"></div>
+
+  <!-- 스크립트 -->
+  <script id="jquery" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script id="js-html2canvas" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.4.1/html2canvas.min.js"></script>
+  <script id="js-prism" src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.14.0/prism.min.js"></script>
+  <script id="js-prism-python" src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.14.0/components/prism-python.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.7.1/clipboard.min.js"></script>
+  <script id="js-codeflask"src="js/codeflask.js"></script>
+  <script id="js-funtions"src="js/functions.js"></script>
+  <script>
+  var flask = new CodeFlask;
+  flask.run('#code-editor', { language: 'python', lineNumbers: true });
+  </script>
+  <script id="js-prism-line-numbers" src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.14.0/plugins/line-numbers/prism-line-numbers.min.js"></script>
+</body>
+</html>

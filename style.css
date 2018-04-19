@@ -1,0 +1,101 @@
+@import url(https://fonts.googleapis.com/css?family=Nanum+Gothic+Coding);
+@import url(https://fonts.googleapis.com/css?family=Nanum+Gothic);
+
+/* font */
+body {
+  font-family: 'Nanum Gothic', sans-serif;
+  font-size: 12pt;
+}
+#code-editor {
+  font-family: 'Nanum Gothic Coding', monospace;
+}
+.CodeFlask__textarea,
+.CodeFlask__pre {
+  font-size: 1.5em;
+}
+.line-numbers-rows>span.result {
+  font-family: Consolas,Monaco,'Andale Mono','Ubuntu Mono',monospace;
+}
+
+/* shape &  align */
+.menu {
+  margin-top: 2em;
+  margin-bottom: 1em;
+  text-align: center;
+}
+button {
+  height: 36px;
+  background-color: #3F51B5;
+  color: #FFF;
+  border-radius: 2px;
+  display: inline-block;
+  position: relative;
+  cursor: pointer;
+  height: 35px;
+  line-height: 35px;
+  padding: 0 1.5rem;
+  font-size: 15px;
+  font-weight: 600;
+  letter-spacing: .8px;
+  text-align: center;
+  text-decoration: none;
+  text-transform: uppercase;
+  vertical-align: middle;
+  white-space: nowrap;
+  outline: none;
+  border: none;
+  user-select: none;
+  border-radius: 2px;
+  transition: all .3s ease-out;
+  box-shadow: 0 2px 5px 0 rgba(0,0,0,0.225);
+}
+button:hover {
+  text-decoration: none;
+  box-shadow: 0 4px 10px 0px rgba(0,0,0,0.225);
+}
+
+#code-editor {
+  border: 1px solid #DDD;
+  width: 70em;
+  margin: auto;
+}
+.CodeFlask__textarea{
+  padding-left: 56px !important;
+  color: #AAA;
+}
+
+.line-numbers>code {
+  padding-left: 40px !important;
+}
+.line-numbers .line-numbers-rows {
+  left: 0;
+  width: 30px;
+}
+
+#result {
+  display: none;
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0,0,0,.4);
+  z-index: 10;
+}
+#result img {
+  position: fixed;
+  right: 0;
+  left: 0;
+  margin-right: auto;
+  margin-left: auto;
+  top: 5%;
+}
+.line-numbers-rows>span.result {
+  color: #999;
+  display: block;
+  padding-right: .8em;
+  text-align: right;
+}
+.line-numbers-rows>span.result:before {
+  content: "";
+}
