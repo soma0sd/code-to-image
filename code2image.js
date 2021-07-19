@@ -74,6 +74,15 @@ function show_capture() {
   container.style.display = "block";
 }
 
+function download_capture() {
+  html2canvas(document.querySelector("#highlighting-code")).then(canvas => {
+    let a = document.createElement('a');
+    a.href = canvas.toDataURL("image/png").replace("image/png", "image/octet-stream");
+    a.download = 'code2image.png';
+    a.click();
+  });
+}
+
 function close_capture() {
   const container = document.querySelector('#result-image');
   const image = document.querySelector('#result-image img');
