@@ -1,38 +1,27 @@
-@import url(https://fonts.googleapis.com/css?family=Nanum+Gothic+Coding);
-@import url(https://fonts.googleapis.com/css?family=Nanum+Gothic);
+@import url("https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/styles/github.min.css");
+@import url('https://fonts.googleapis.com/css2?family=Nanum+Gothic+Coding:wght@400;700&family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap');
 
-/* font */
 body {
-  font-family: 'Nanum Gothic', sans-serif;
-  font-size: 12pt;
+  font-family: 'Noto Sans KR', sans-serif;
+  background-color: #DDD;
 }
-#code-editor {
-  font-family: 'Nanum Gothic Coding', monospace;
+nav {
+  padding: 10px;
+  margin: auto;
 }
-.CodeFlask__textarea,
-.CodeFlask__pre {
-  font-size: 1.5em;
-}
-.line-numbers-rows>span.result {
-  font-family: Consolas,Monaco,'Andale Mono','Ubuntu Mono',monospace;
+main {
+  margin: auto;
 }
 
-/* shape &  align */
-.menu {
-  margin-top: 2em;
-  margin-bottom: 1em;
-  text-align: center;
-}
-button {
+button, a.button {
   height: 36px;
   background-color: #3F51B5;
   color: #FFF;
   border-radius: 2px;
   display: inline-block;
-  position: relative;
   cursor: pointer;
-  height: 35px;
-  line-height: 35px;
+  height: 30px;
+  line-height: 30px;
   padding: 0 1.5rem;
   font-size: 15px;
   font-weight: 600;
@@ -49,30 +38,52 @@ button {
   transition: all .3s ease-out;
   box-shadow: 0 2px 5px 0 rgba(0,0,0,0.225);
 }
-button:hover {
-  text-decoration: none;
-  box-shadow: 0 4px 10px 0px rgba(0,0,0,0.225);
-}
 
 #code-editor {
-  border: 1px solid #DDD;
-  width: 70em;
-  margin: auto;
+  position: relative;
 }
-.CodeFlask__textarea{
-  padding-left: 56px !important;
+#editing-code, #highlighting-code {
+  position: absolute;
+  margin: 0;
+  padding: 0;
+  top: 0;
+  left: 10px;
+  font-family: 'Nanum Gothic Coding', monospace;
+  white-space: nowrap;
+  overflow-x: hidden;
+  font-size: 15px;
+  line-height: 20px;
+}
+#editing-code {
+  left: 45px;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  color: transparent;
+  background-color: transparent;
+  caret-color: red;
+  border: none;
+  z-index: 1;
+  resize: none;
+  outline: none;
+  border-left: #AAA 2px solid;
+}
+#highlighting-code {
+  border-radius: 2px;
+  z-index: 0;
+}
+#highlighting-code code {
+  font-family: 'Nanum Gothic Coding', monospace;
+}
+.hljs-ln-n {
+  border-right: #AAA 2px solid;
   color: #AAA;
-}
-
-.line-numbers>code {
-  padding-left: 40px !important;
-}
-.line-numbers .line-numbers-rows {
-  left: 0;
+  padding-right: 5px;
   width: 30px;
+  text-align: right;
 }
 
-#result {
+#result-image {
   display: none;
   position: fixed;
   left: 0;
@@ -82,20 +93,13 @@ button:hover {
   background-color: rgba(0,0,0,.4);
   z-index: 10;
 }
-#result img {
+
+#result-image img {
   position: fixed;
   right: 0;
   left: 0;
   margin-right: auto;
   margin-left: auto;
   top: 5%;
-}
-.line-numbers-rows>span.result {
-  color: #999;
-  display: block;
-  padding-right: .8em;
-  text-align: right;
-}
-.line-numbers-rows>span.result:before {
-  content: "";
+  z-index: 10;
 }

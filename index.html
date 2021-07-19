@@ -1,33 +1,49 @@
 <!doctype html>
 <html lang="ko">
 <head>
-  <!-- CSS -->
-  <link id="css-normalize" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.0/normalize.min.css" />
-  <link id="css-prism" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.14.0/themes/prism.min.css" />
-  <link id="css-prism-line-numbers" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.14.0/plugins/line-numbers/prism-line-numbers.min.css" />
-  <link id="css-codeflask" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/CodeFlask.js/0.2.0/codeflask.css" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/highlight.min.js" integrity="sha512-z+/WWfyD5tccCukM4VvONpEtLmbAm5LDu7eKiyMQJ9m7OfPEDL7gENyDRL3Yfe8XAuGsS2fS4xSMnl6d30kqGQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlightjs-line-numbers.js/2.8.0/highlightjs-line-numbers.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.1.4/dist/html2canvas.min.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.0/normalize.min.css" />
   <link rel="stylesheet" href="style.css" />
+  <link id="code-style" rel="stylesheet" />
+  <title>Code to Image::soma0sd</title>
 </head>
 <body>
-  <p class="menu">
-    <button id="btn_cr" onclick="create_img();">다운로드</button>
-    <button id="btn_cp" onclick="show_img();">미리보기</button>
-  </p>
-  <div id="code-editor"></div>
-  <div id="result"></div>
-
-  <!-- 스크립트 -->
-  <script id="jquery" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-  <script id="js-html2canvas" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.4.1/html2canvas.min.js"></script>
-  <script id="js-prism" src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.14.0/prism.min.js"></script>
-  <script id="js-prism-python" src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.14.0/components/prism-python.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.7.1/clipboard.min.js"></script>
-  <script id="js-codeflask"src="js/codeflask.js"></script>
-  <script id="js-funtions"src="js/functions.js"></script>
-  <script>
-  var flask = new CodeFlask;
-  flask.run('#code-editor', { language: 'python', lineNumbers: true });
-  </script>
-  <script id="js-prism-line-numbers" src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.14.0/plugins/line-numbers/prism-line-numbers.min.js"></script>
+  <nav>
+    <div>
+      <a class="button" href="https://github.com/soma0sd/code-to-image">Github 저장소</a>
+    </div>
+    <div style="margin-top: 10px;">
+      <label for="langs">언어 설정:</label>
+      <select id="langs-select" name="langs" onchange="select_change(); update_code()">
+        <option value="auto">자동</option>
+        <option value="javascript">JavaScript</option>
+        <option value="python">Python</option>
+        <option value="java">Java</option>
+      </select>
+      <label for="style">스타일 설정:</label>
+      <select id="style-select" name="style" onchange="select_change(); update_code()">
+        <option value="github">Github</option>
+        <option value="github-dark">Github Dark</option>
+      </select>
+      <button onclick="show_capture();">소스코드 캡쳐</button>
+    </div>
+  </nav>
+  <main>
+    <div id="code-editor">
+      <textarea
+      cols="100"
+      placeholder="소스코드 입력"
+      id="editing-code"
+      spellcheck="false"
+      oninput="update_code(this.value); resize();"
+      onkeydown="check_tab(this, event);"
+      ></textarea>
+      <pre id="highlighting-code" class="hljs"><code></code></pre>
+    </div>
+  </main>
+  <div id="result-image" onclick="close_capture();"></div>
 </body>
+<script src="./code2image.js"></script>
 </html>
